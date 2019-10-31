@@ -1,0 +1,7 @@
+{
+    "disableAutoUpdate": false,
+    "name": "EZ-Chan-CMD",
+    "description": "Description goes here.",
+    "supportUrl": ["https://github.com/PsykoDev/EZ-Chan-CMD"],
+    "servers": ["https://raw.githubusercontent.com/PsykoDev/EZ-Chan-CMD/master/"]
+}
