@@ -1,6 +1,6 @@
 String.prototype.clr = function(hexColor) { return `<font color='#${hexColor}'>${this}</font>` ;};
 
-module.exports = function EZ-Chan-Cmd(mod) {
+module.exports = function EZChanCmd(mod) {
 
 	const channels = {'2': 1, '3': 1, '5': 3, '13': 8, '7001': 7, '7002': 3, '7003': 5, '7004': 4, '7005': 10, '7011': 7, '7012': 5, '7013': 1, '7014': 5, '7015': 7, '7021': 3, '7022': 3, '7023': 4, '7031': 3, '8001': 1};
 
