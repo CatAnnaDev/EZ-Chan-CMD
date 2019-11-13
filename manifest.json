@@ -1,12 +1,17 @@
 {
     "files": {
-        "README.md": "604c90635f9b05cd76526d546ad6bd9909c968132f5d008083bbe19abe8af19a",
-        "index.js": "7b46a5e1f1c296f28c7bb66b6f63e08b1c23584d1b29ef0d141d176df3569dff",
+        "README.md": "53d13d57b7a1c8b2d2a1a080a1d4c9d188f88c6b7445270843de405453ab03e2",
+        "index.js": "347aa1858ebd043bd0663963ea378fd4df1bbbd39297933f7f8b3d52befb8dbe",
         "module.json": "ea7f434baaf936d3f921862206215e39fe12015e7a8a9f221f6838ca77432024"
     },
     "defs": {
         "C_SELECT_CHANNEL": 1,
         "S_CURRENT_CHANNEL": 2,
-        "S_LOAD_TOPO": 3
+        "S_LOAD_TOPO": 3,
+		"S_PREPARE_SELECT_CHANNEL": 1,
+		"S_CANCEL_SELECT_CHANNEL": 1,
+		"S_SPAWN_ME": 3,
+		"C_PLAYER_LOCATION": 5,
+		"S_INSTANT_MOVE" :3
     }
 }
