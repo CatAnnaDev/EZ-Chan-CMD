@@ -18,7 +18,8 @@ module.exports = function EZChanCmd(mod) {
 		serverQuick = false,
 		modifying = false,
 		myPos = null,
-		spawnLoc = null;
+		spawnLoc = null,
+		enabled = true;
 
 		mod.hook('S_LOGIN', 'raw', () => {
 			zone = -1
@@ -28,6 +29,11 @@ module.exports = function EZChanCmd(mod) {
 	mod.game.on('enter_game', () => {
 			load();
 	});
+
+	mod.command.add('ql', () => {
+		enabled = !enabled
+		mod.command.message('Quick Load is ' + (enabled ? 'enabled' : 'disabled'))
+	})
 
 	mod.game.on('leave_game', () => { unload(); });
 	
@@ -138,8 +144,8 @@ module.exports = function EZChanCmd(mod) {
 	}
 
 	mod.hook('S_LOAD_TOPO', 3, {order: 100}, event => {
+		if(!enabled) return
 		serverQuick = event.quick
-
 		if(event.zone === zone && (longTele || myPos.dist3D(event.loc) <= maxDistance))
 			return event.quick = modifying = true
 
@@ -202,5 +208,5 @@ module.exports = function EZChanCmd(mod) {
 
 	function msg(event) { mod.command.message(event); }
 
-	this.destructor = () => { mod.command.remove(['c', 'ch', 'channel', 'ㅊ']); };
+	this.destructor = () => { mod.command.remove(['c', 'ch', 'channel', 'ㅊ', 'ql']); };
 };
