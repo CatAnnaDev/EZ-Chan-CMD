@@ -3,9 +3,9 @@ const config = require("./config.json");
 
 module.exports = function EZChanCmd(mod) {
 
-	let maxDistance = 5000,		// Distance at which quick-load will always ignore loading screens
-	longTele = true,		// Enables quick-load for long teleports beyond maxDistance
-	longTeleHoldMs = 500	// Hold duration to prevent falling through the map - Depends on your disk speed
+	let maxDistance = config.maxDistance,		// Distance at which quick-load will always ignore loading screens
+		longTele = config.longTele,		// Enables quick-load for long teleports beyond maxDistance
+		longTeleHoldMs = config.longTeleHoldMs	// Hold duration to prevent falling through the map - Depends on your disk speed
 
 	const channels = {'2': 1, '3': 1, '5': 3, '13': 8, '7001': 7, '7002': 3, '7003': 5, '7004': 4, '7005': 10, '7011': 7, '7012': 5, '7013': 1, '7014': 5, '7015': 7, '7021': 3, '7022': 3, '7023': 4, '7031': 3, '8001': 1};
 
@@ -149,7 +149,7 @@ module.exports = function EZChanCmd(mod) {
 	mod.hook('S_LOAD_TOPO', 3, {order: 100}, event => {
 		if (!enabled) return;
 		serverQuick = event.quick
-		if(event.zone === zone && (longTele || myPos.dist3D(event.loc) <= maxDistance))
+		if(event.zone === zone && (config.longTele || myPos.dist3D(event.loc) <= config.settmaxDistance.value))
 			return event.quick = modifying = true
 
 		myPos = event.loc
@@ -160,7 +160,7 @@ module.exports = function EZChanCmd(mod) {
 	mod.hook('S_SPAWN_ME', 3, {order: 100}, event => {
 		if(!serverQuick) spawnLoc = event
 		if(modifying) {
-			if(!myPos || myPos.dist3D(event.loc) > maxDistance)
+			if(!myPos || myPos.dist3D(event.loc) > config.maxDistance.value)
 				process.nextTick(() => { mod.send('S_ADMIN_HOLD_CHARACTER', 2, {hold: true}) })
 			else modifying = false
 
@@ -194,7 +194,7 @@ module.exports = function EZChanCmd(mod) {
 		spawnLoc = null
 
 		if(modifying) {
-			mod.setTimeout(() => { mod.send('S_ADMIN_HOLD_CHARACTER', 2, {hold: false}) }, longTeleHoldMs)
+			mod.setTimeout(() => { mod.send('S_ADMIN_HOLD_CHARACTER', 2, {hold: false}) }, config.longTeleHoldMs.value)
 			modifying = false
 		}
 	})
