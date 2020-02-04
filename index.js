@@ -1,4 +1,5 @@
 String.prototype.clr = function(hexColor) { return `<font color='#${hexColor}'>${this}</font>` ;};
+const config = require("./config.json");
 
 module.exports = function EZChanCmd(mod) {
 
@@ -19,7 +20,7 @@ module.exports = function EZChanCmd(mod) {
 		modifying = false,
 		myPos = null,
 		spawnLoc = null,
-		enabled = true;
+		enabled = config.enabled;
 
 		mod.hook('S_LOGIN', 'raw', () => {
 			zone = -1
@@ -30,10 +31,12 @@ module.exports = function EZChanCmd(mod) {
 			load();
 	});
 
-	mod.command.add('ql', () => {
-		enabled = !enabled
-		mod.command.message('Quick Load is ' + (enabled ? 'enabled' : 'disabled'))
-	})
+    mod.command.add("ql", {
+		$none() { 
+			enabled = !enabled;
+			mod.command.message(`Quick Load is ${enabled ? "en" : "dis"}abled`)
+		}
+}, this);
 
 	mod.game.on('leave_game', () => { unload(); });
 	
@@ -144,7 +147,7 @@ module.exports = function EZChanCmd(mod) {
 	}
 
 	mod.hook('S_LOAD_TOPO', 3, {order: 100}, event => {
-		if(!enabled) return
+		if (!enabled) return;
 		serverQuick = event.quick
 		if(event.zone === zone && (longTele || myPos.dist3D(event.loc) <= maxDistance))
 			return event.quick = modifying = true
@@ -156,7 +159,6 @@ module.exports = function EZChanCmd(mod) {
 
 	mod.hook('S_SPAWN_ME', 3, {order: 100}, event => {
 		if(!serverQuick) spawnLoc = event
-
 		if(modifying) {
 			if(!myPos || myPos.dist3D(event.loc) > maxDistance)
 				process.nextTick(() => { mod.send('S_ADMIN_HOLD_CHARACTER', 2, {hold: true}) })
