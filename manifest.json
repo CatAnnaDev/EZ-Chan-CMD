@@ -1,12 +1,13 @@
 {
     "files": {
         "README.md": "53d13d57b7a1c8b2d2a1a080a1d4c9d188f88c6b7445270843de405453ab03e2",
-        "index.js": "2fbdefa345e998bfeb7a559cb43fde900af59e13e8a06f1c442e5d41c285ef5c",
-        "module.json": "ea7f434baaf936d3f921862206215e39fe12015e7a8a9f221f6838ca77432024",
+        "index.js": "15221d305367bf8202bd3bcd6e36e57ca8b6e6e25fd3e64777549ec4162fd993",
+        "module.json": "785ef7839598902defed27b750dd36b0112dd4e2b4f9ed6e3d271b8d083adfd3",
         "config.json": {
 			"overwrite": false,
-			"hash": "07335c86fbb13fd8d38ed825ddc55c33a809515d54b3ce8d080916003b3ae05b"
-		}
+            "hash": "853cf978c79e53899954f98b3a72e288aebc6575c0b5718273bafb059d89f2c6"
+        },
+        "settings_migrator.js": "00fa49d4982cb93500f690203fc6b8279137451492a0fcc4b292993605871e75"
     },
     "defs": {
         "C_SELECT_CHANNEL": 1,

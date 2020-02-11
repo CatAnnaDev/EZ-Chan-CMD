@@ -1,7 +1,16 @@
 {
     "disableAutoUpdate": false,
     "name": "EZ-Chan-CMD",
-    "description": "Description goes here.",
+    "author": "PsykoDev",
+    "description": "",
+    "options": {
+        "niceName": "EZ-Chan-CMD",
+        "guiName": "EZ-Chan-CMD",
+        "reloadable": true,
+        "settingsVersion": 88.5,
+        "settingsFile": "config.json",
+        "settingsMigrator": "settings_migrator.js"
+},
     "supportUrl": ["https://github.com/PsykoDev/EZ-Chan-CMD"],
     "servers": ["https://raw.githubusercontent.com/PsykoDev/EZ-Chan-CMD/master/"]
 }

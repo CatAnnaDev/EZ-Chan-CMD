@@ -1,12 +1,15 @@
 {
-	"enabled": true,
-	"longTele": true,
-	"maxDistance": {
-		"value": 4000,
-		"name": "maxDistance"
-	},
-	"longTeleHoldMs": {
-		"value": 800,
-		"name": "longTeleHoldMs"
-	}
+    "version": 88.5,
+    "data": {
+        "enabled": true,
+        "longTele": true,
+        "maxDistance": {
+            "value": 4000,
+            "name": "maxDistance"
+        },
+        "longTeleHoldMs": {
+            "value": 800,
+            "name": "longTeleHoldMs"
+        }
+    }
 }
