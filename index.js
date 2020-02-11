@@ -142,7 +142,7 @@ module.exports = function EZChanCmd(mod) {
 	}
 
 	mod.hook('S_LOAD_TOPO', 3, {order: 100}, event => {
-		if (mod.settings.enabled) return;
+		if (!mod.settings.enabled) return; {
 		serverQuick = event.quick
 		if(event.zone === zone && (mod.settings.longTele || myPos.dist3D(event.loc) <= mod.settings.settmaxDistance.value))
 			return event.quick = modifying = true
@@ -150,6 +150,7 @@ module.exports = function EZChanCmd(mod) {
 		myPos = event.loc
 		zone = event.zone
 		modifying = false
+		}
 	})
 
 	mod.hook('S_SPAWN_ME', 3, {order: 100}, event => {
