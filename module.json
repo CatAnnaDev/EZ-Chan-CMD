@@ -7,7 +7,7 @@
         "niceName": "EZ-Chan-CMD",
         "guiName": "EZ-Chan-CMD",
         "reloadable": true,
-        "settingsVersion": 88.5,
+        "settingsVersion": 90.2,
         "settingsFile": "config.json",
         "settingsMigrator": "settings_migrator.js"
 },

@@ -1,5 +1,5 @@
 String.prototype.clr = function(hexColor) { return `<font color='#${hexColor}'>${this}</font>` ;};
-
+const SettingsUI = require('tera-mod-ui').Settings;
 module.exports = function EZChanCmd(mod) {
 
 	const channels = {'2': 1, '3': 1, '5': 3, '13': 8, '7001': 7, '7002': 3, '7003': 5, '7004': 4, '7005': 10, '7011': 7, '7012': 5, '7013': 1, '7014': 5, '7015': 7, '7021': 3, '7022': 3, '7023': 4, '7031': 3, '8001': 1};
@@ -64,6 +64,10 @@ module.exports = function EZChanCmd(mod) {
 						msg(`${m === 1 ? 'There is only one channel' : 'Invalid arguments. Type: c s ChannelOne ChannelTwo'}.`.clr('FF0000'));
 						return;
 					}
+				case 'ui':
+				case 'giu':
+					ui.show();
+					break;
 				case 't':
 				case 'toggle':
 					if(c == cOne) t = cTwo;
@@ -207,4 +211,17 @@ module.exports = function EZChanCmd(mod) {
 	function msg(event) { mod.command.message(event); }
 
 	this.destructor = () => { mod.command.remove(['c', 'ch', 'channel', 'ㅊ', 'ql']); };
+
+	let ui = null;
+if (global.TeraProxy.GUIMode) {
+	ui = new SettingsUI(mod, require('./settings_structure'), mod.settings, { alwaysOnTop: true, width: 550, height: 200 });
+	ui.on('update', settings => { mod.settings = settings; });
+
+	this.destructor = () => {
+		if (ui) {
+			ui.close();
+			ui = null;
+		}
+	};
+}
 };

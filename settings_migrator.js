@@ -1,14 +1,8 @@
 const DefaultSettings = {
 	"enabled": true,
 	"longTele": true,
-	"maxDistance": {
-		"value": 4000,
-		"name": "maxDistance"
-	},
-	"longTeleHoldMs": {
-		"value": 800,
-        "name": "longTeleHoldMs"
-    }
+    "maxDistance": 4000,
+    "longTeleHoldMs": 800
 };
 
 module.exports = function MigrateSettings(from_ver, to_ver, settings) {
